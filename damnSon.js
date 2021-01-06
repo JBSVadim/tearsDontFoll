@@ -73,3 +73,23 @@ const numbers = [1,3,6,76,7,5,32,3142,5653];
 const numbers2 = [67,45,53,4534,3,43,444,5,66233,22];
 
 const wtf = [ ...numbers, ...numbers2];
+
+function countDown(numb) {
+  console.log(numb);
+  if (numb > 0) {
+    countDown(numb -1)
+  }
+  return true;
+}
+
+
+const logRange = (min, max) => {
+  if( min> max) {
+    return false;
+  }
+  console.log(min);
+  if(min < max){
+  logRange(min +1, max);
+}
+return true;
+};
