@@ -1,0 +1,19 @@
+h1 {
+  font-size: 10rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+p {
+  font-size: 2rem;
+}
+
+body {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+img {
+  padding-bottom: 50px;
+}
