@@ -93,3 +93,19 @@ const logRange = (min, max) => {
 }
 return true;
 };
+
+
+const power = (num, exp) => {
+  if(exp <=1) {
+    return num;
+  }
+  return num * power(num, exp - 1);
+}
+const factorial = (num) => {
+  
+  if(num <= 0) {
+    return 1;
+  }
+  return factorial(num - 1) * num  ;
+}
+
