@@ -46,15 +46,15 @@ const summingTwo = (...rest) => {
   let res = null;
   rest.forEach((number) => {
     res += number;
-  })
+  });
   return res;
-}
+};
 
 const sumReduce = (...rest) => {
   return rest.reduce((Accamulator, value) => {
     return Accamulator + value;
-  })
-}
+  });
+};
 
 const sumArrow = (a, b) => a + b;
 
@@ -69,43 +69,86 @@ function bigSum() {
   return res;
 }
 
-const numbers = [1,3,6,76,7,5,32,3142,5653];
-const numbers2 = [67,45,53,4534,3,43,444,5,66233,22];
+const numbers = [1, 3, 6, 76, 7, 5, 32, 3142, 5653];
+const numbers2 = [67, 45, 53, 4534, 3, 43, 444, 5, 66233, 22];
 
-const wtf = [ ...numbers, ...numbers2];
+const wtf = [...numbers, ...numbers2];
 
 function countDown(numb) {
   console.log(numb);
   if (numb > 0) {
-    countDown(numb -1)
+    countDown(numb - 1);
   }
   return true;
 }
 
-
 const logRange = (min, max) => {
-  if( min> max) {
+  if (min > max) {
     return false;
   }
   console.log(min);
-  if(min < max){
-  logRange(min +1, max);
-}
-return true;
+  if (min < max) {
+    logRange(min + 1, max);
+  }
+  return true;
 };
 
-
 const power = (num, exp) => {
-  if(exp <=1) {
+  if (exp <= 1) {
     return num;
   }
   return num * power(num, exp - 1);
-}
+};
 const factorial = (num) => {
-  
-  if(num <= 0) {
+  if (num <= 0) {
     return 1;
   }
-  return factorial(num - 1) * num  ;
-}
+  return factorial(num - 1) * num;
+};
 
+const doska = function (a, b) {
+  let size = a * b;
+  let i = 0;
+  let result = '';
+  while (i <= size) {
+    i++;
+    if (i % 2 === 1 && !(i % a === 0)) {
+      (result += " ");
+    }
+    if (i % 2 === 0 && !(i % a === 0)) {
+            (result += "#");
+    }
+    if (i % a === 0) {
+      if (i % 2 === 1 && !(i === size)) {
+        
+         (result += " \n");
+      }
+      if (i % 2 === 0 && !(i === size)) {
+        
+         (result += "#\n");
+      }
+    }
+    if (i === size) {
+      if (i % 2 === 1) {
+         (result += " ");
+      }
+      if (i % 2 === 0) {
+        (result += "#");
+      }
+    }
+  }
+  return result;
+};
+
+
+const glasnoIskatelEpic10000 = function (str) {
+  const smallsizeLettter = str.toLowerCase();
+  const letterMostWantedList = ['a', 'e', 'i', 'o', 'u'];
+  let count = 0;
+    for (let i = 0; i < smallsizeLettter.length; i++) {
+      if (letterMostWantedList.includes(smallsizeLettter[i])) {
+        count++;
+      }
+    }
+  return count;  
+}
