@@ -49,10 +49,29 @@ const MIN_ZP = 6000/21;
 
 class Worker {
   constructor(name, surName, daysAtWork = 0, cashPerDay = MIN_ZP, ) {
+    if(typeof days !== 'number' || typeof rate !=='number') {
+      throw new TypeError('Parameters have unappropriate type')
+    }
+    if (days < 0|| days > 31) {
+      throw new RangeError();
+    }
+    if(rate < 0) {
+      throw new RangeError();
+    }
     this.name = name;
     this.surName = surName;
-    this.cashPerDay = cashPerDay;
+    this._cashPerDay = cashPerDay; //люди сами придумали что по совести с _ менять нельзя потому что все полетит к чертям
     this.daysAtWork = daysAtWork;
+  }
+
+  setRate(newRate) {
+    if(typeof newRate !== 'number') {
+      throw new TypeError('Nononoonoooo');
+    }
+    if(newRate < 0) {
+      throw new RangeError();
+    }
+    this.cashPerDay = newRate;
   }
 
   getMyMoney () {
@@ -89,3 +108,19 @@ class Auto {
 
 const benzinchik = new Fuel(50);
 const mashinka = new Auto (3000, 'drandulet', benzinchik)
+
+class Friend {
+  constructor(name,appleAmount = 0, friend) {
+    this.name = name;
+    this.appleAmount = appleAmount;
+    this.friend = friend;
+  }
+
+  getAppelAmount () {
+    return this.appleAmount + this.friend.appleAmount
+  }
+}
+
+const f1 = new Friend ('Potomuchto', 5, );
+const f2 = new Friend ('AAAAAAAAAAAAA', 5, f1 );
+f1.friend = f2;
