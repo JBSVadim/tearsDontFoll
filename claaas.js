@@ -1,4 +1,4 @@
-
+'use strict'
 function User(name,surName,age) {
   this.name = name;
   this.surName = name;
@@ -48,34 +48,45 @@ const polzovotel = new UserClass ('Damn', 'Tears', 19);
 const MIN_ZP = 6000/21;
 
 class Worker {
-  constructor(name, surName, daysAtWork = 0, cashPerDay = MIN_ZP, ) {
-    if(typeof days !== 'number' || typeof rate !=='number') {
-      throw new TypeError('Parameters have unappropriate type')
-    }
-    if (days < 0|| days > 31) {
-      throw new RangeError();
-    }
-    if(rate < 0) {
-      throw new RangeError();
-    }
+  constructor(name, surName, days = 0, rate = MIN_ZP, ) {
+    
     this.name = name;
     this.surName = surName;
-    this._cashPerDay = cashPerDay; //люди сами придумали что по совести с _ менять нельзя потому что все полетит к чертям
-    this.daysAtWork = daysAtWork;
+    this.days = days;
+    this.rate = rate; //люди сами придумали что по совести с _ менять нельзя потому что все полетит к чертям
+   
   }
 
-  setRate(newRate) {
+  set days(day) {
+    if(typeof day !== 'number') {
+      throw new TypeError('nonononoo')
+    }
+    if (day < 0 || day > 31) {
+      throw new RangeError();
+    }
+    return this._days = day;
+  }
+
+  get days() {
+    return this._days;
+  }
+
+  set rate(newRate) {
     if(typeof newRate !== 'number') {
       throw new TypeError('Nononoonoooo');
     }
     if(newRate < 0) {
       throw new RangeError();
     }
-    this.cashPerDay = newRate;
+    this._rate= newRate;
+  }
+
+  get rate() {
+    return this._rate
   }
 
   getMyMoney () {
-    return this.cashPerDay*this.daysAtWork
+    return this._days*this._rate
   }
 }
 
@@ -87,7 +98,8 @@ class Fuel {
     this.density = density;
   }
 
-  getFuelWeight () {
+ 
+  get FuelWeight () {
     return this.volume * this.density
   }
 }
@@ -101,8 +113,8 @@ class Auto {
     this.fuel = fuel;
   }
 
-  getFullWeight () {
-    return this.ownWeight + this.fuel.getFuelWeight()
+  get FullWeight () {
+    return this.ownWeight + this.fuel.getFuelWeight
   }
 }
 
