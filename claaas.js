@@ -78,7 +78,7 @@ class Worker {
     if(newRate < 0) {
       throw new RangeError();
     }
-    this._rate= newRate;
+    this._rate = newRate;
   }
 
   get rate() {
@@ -86,7 +86,7 @@ class Worker {
   }
 
   getMyMoney () {
-    return this._days*this._rate
+    return this._days*this.rate
   }
 }
 
